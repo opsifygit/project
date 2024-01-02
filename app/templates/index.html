@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Model Prediction</title>
+
+    <!-- Tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- form input example {
+    "Machine_ID": "Machine_1",
+    "Sensor_ID": "Sensor_1",
+    "Timestamp": "2024-01-02T12:34:56"
+} -->
+    <div class="flex justify-center items-center h-screen">
+      <div class="w-1/2">
+        <h1 class="text-3xl font-bold mb-5">Model Prediction</h1>
+        <!-- <form action="/predict" method="POST"> -->
+        <div class="flex flex-col mb-4">
+          <label
+            for="Machine_ID"
+            class="mb-2 font-bold text-lg text-grey-darkest"
+            >Machine ID</label
+          >
+          <input
+            type="text"
+            name="Machine_ID"
+            id="Machine_ID"
+            class="border py-2 px-3 text-grey-darkest"
+          />
+        </div>
+        <div class="flex flex-col mb-4">
+          <label
+            for="Sensor_ID"
+            class="mb-2 font-bold text-lg text-grey-darkest"
+            >Sensor ID</label
+          >
+          <input
+            type="text"
+            name="Sensor_ID"
+            id="Sensor_ID"
+            class="border py-2 px-3 text-grey-darkest"
+          />
+        </div>
+        <div class="flex flex-col mb-4">
+          <label
+            for="Timestamp"
+            class="mb-2 font-bold text-lg text-grey-darkest"
+            >Timestamp</label
+          >
+          <input
+            type="text"
+            name="Timestamp"
+            id="Timestamp"
+            class="border py-2 px-3 text-grey-darkest"
+          />
+        </div>
+        <!-- <div id="predictionResult"></div> -->
+        <!-- Prediction result in input disabled -->
+        <div class="flex flex-col mb-4">
+          <label
+            for="predictionResult"
+            class="mb-2 font-bold text-lg text-grey-darkest"
+            >Prediction</label
+          >
+          <input
+            type="text"
+            name="predictionResult"
+            id="predictionResult"
+            class="border py-2 px-3 text-grey-darkest"
+            disabled
+          />
+        </div>
+        <!-- Button submit -->
+        <button
+          type="submit"
+          class="block bg-blue-500 hover:bg-blue-800 text-white uppercase text-lg mx-auto p-4 rounded"
+          onclick="predict()"
+        >
+          Predict
+        </button>
+        <!-- </form> -->
+      </div>
+    </div>
+
+    <script>
+      function predict() {
+        // Get values from the form
+        var machineId = document.getElementById("Machine_ID").value;
+        var sensorId = document.getElementById("Sensor_ID").value;
+        var timestamp = document.getElementById("Timestamp").value;
+
+        // Create data object
+        var data = {
+          Machine_ID: machineId,
+          Sensor_ID: sensorId,
+          Timestamp: timestamp,
+        };
+
+        // Send POST request to /predict endpoint
+        fetch("http://localhost:5000/predict", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((result) => {
+            // Display the prediction result
+            // document.getElementById("predictionResult").innerText =
+            //   "Prediction: " + result.prediction[0];
+            document.getElementById("predictionResult").value =
+              result.prediction[0];
+          })
+          .catch((error) => console.error("Error:", error));
+      }
+    </script>
+  </body>
+</html>

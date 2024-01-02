@@ -1,0 +1,22 @@
+stages:
+  get_data:
+    cmd: python random_data.py
+    deps:
+    - random_data.py
+    outs:
+    - dummy_sensor_data.csv
+  
+  process_data:
+    cmd: python process_data.py
+    deps:
+    - process_data.py
+    - dummy_sensor_data.csv
+    outs:
+    - processed_data.csv
+  
+  training:
+    cmd: python train.py
+    deps:
+    - train.py
+    - processed_data.csv
+

@@ -1,15 +1,11 @@
-FROM python:3.8
-WORKDIR /app
+FROM python:3.10-alpine AS builder
 
-# Install dependencies
-COPY /requirements.txt /app/requirements.txt
-RUN pip install -r requirements.txt
+WORKDIR /src
+COPY requirements.txt /src
+RUN --mount=type=cache,target=/root/.cache/pip \
+    pip3 install -r requirements.txt
 
-# Copy source code
-COPY . /app
-
-# Expose port
+COPY . .
 EXPOSE 5000
 
-# Run the application
-CMD ["python", "app.py"]
+CMD ["python3", "main.py"]
