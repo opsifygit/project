@@ -1,11 +1,11 @@
 FROM python:3.10-alpine AS builder
 
 WORKDIR /src
-COPY requirements.txt /src/requirements.txt
+COPY ./app/requirements.txt /src/requirements.txt
 RUN pip install -r /src/requirements.txt
 RUN echo "Hello"
 
-COPY . .
+COPY ./app/ .
 EXPOSE 5000
 
-CMD ["python3", "main.py"]
+CMD ["python3", "/app/main.py"]
