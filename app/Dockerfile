@@ -7,6 +7,8 @@ RUN apk add --no-cache --update \
 
 WORKDIR /src
 COPY ./app/requirements.txt /src/requirements.txt
+RUN pip install --upgrade pip
+RUN apk add build-base
 RUN pip3 install -r /src/requirements.txt
 RUN echo "Hello"
 
