@@ -1,3 +1,4 @@
+[![Publish Docker Image](https://github.com/opsifygit/project/actions/workflows/dockerhubPush.yml/badge.svg)](https://github.com/opsifygit/project/actions/workflows/dockerhubPush.yml)
 # MLOPS Project
 
 ## Project Description
