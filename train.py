@@ -9,6 +9,7 @@ import joblib
 
 import mlflow
 
+min_mae = 10000000000
 
 df = pd.read_csv("processed_data.csv")
 
