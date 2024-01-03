@@ -9,8 +9,6 @@ import joblib
 
 import mlflow
 
-min_mae = 10000000000
-
 df = pd.read_csv("processed_data.csv")
 
     # Split data
@@ -45,9 +43,8 @@ mse = mean_squared_error(y_test, y_pred)
 print(f"Mean Squared Error: {mse}")
 
 # Save the model
-if mse < min_mae:
-    min_mae = mse
-    joblib.dump(model, "app/model.pkl")
+
+joblib.dump(model, "app/model.pkl")
 
 
 try:
