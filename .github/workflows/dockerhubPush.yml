@@ -16,8 +16,7 @@ jobs:
     - name: Install Python dependencies
       run: |
         make install
-
-    # Run the DVC pipeline
+        
     - name: Run DVC pipeline
       run: |
         dvc repro
