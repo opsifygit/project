@@ -9,47 +9,47 @@ import joblib
 
 import mlflow
 
-min_mae = 1000000
 
-for i in range(10):
-    df = pd.read_csv("processed_data.csv")
+df = pd.read_csv("processed_data.csv")
 
     # Split data
-    X = df.drop(["Reading", "Timestamp"], axis=1)
-    y = df["Reading"]
-    X_train, X_test, y_train, y_test = train_test_split(
-        X, y, test_size=0.20, random_state=42
-    )
+X = df.drop(["Reading", "Timestamp"], axis=1)
+y = df["Reading"]
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.20, random_state=42
+)
 
-    learning_rate = 0.1
-    n_estimators = 50 * (i + 1)
-    max_depth = 3
-    subsample = 0.8
-    colsample_bytree = 0.8
+learning_rate = 0.1
+n_estimators = 50
+max_depth = 3
+subsample = 0.8
+colsample_bytree = 0.8
 
-    # Model Selection
-    model = XGBRegressor(
-        learning_rate=learning_rate,
-        n_estimators=n_estimators,
-        max_depth=max_depth,
-        subsample=subsample,
-        colsample_bytree=colsample_bytree,
-        random_state=42,
-    )
-    model.fit(X_train, y_train)
+# Model Selection
+model = XGBRegressor(
+    learning_rate=learning_rate,
+    n_estimators=n_estimators,
+    max_depth=max_depth,
+    subsample=subsample,
+    colsample_bytree=colsample_bytree,
+    random_state=42,
+)
+model.fit(X_train, y_train)
 
-    # Prediction
-    y_pred = model.predict(X_test)
+# Prediction
+y_pred = model.predict(X_test)
 
-    # Evaluation
-    mse = mean_squared_error(y_test, y_pred)
-    print(f"Mean Squared Error: {mse}")
+# Evaluation
+mse = mean_squared_error(y_test, y_pred)
+print(f"Mean Squared Error: {mse}")
 
-    # Save the model
-    if mse < min_mae:
-        min_mae = mse
-        joblib.dump(model, "app/model.pkl")
+# Save the model
+if mse < min_mae:
+    min_mae = mse
+    joblib.dump(model, "app/model.pkl")
 
+
+try:
     # MLFLOW
     EXPERIMENT_NAME = "mlflow-xgboost"
     EXPERIMENT_ID = 0
@@ -78,3 +78,5 @@ for i in range(10):
 
         # Track model
         mlflow.sklearn.log_model(model, "xgboost-model")
+except:
+    print("MLflow Exception")
