@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1704258141513
+current_stage: None
+description: ''
+last_updated_timestamp: 1704258141513
+name: BEST_XGBOOST
+run_id: 55f5992831664f039e49f1f178f4256f
+run_link: ''
+source: file:///D:/BSCS/7th%20sem/MLOPs/MLOPs_Project/mlruns/258893239347701872/55f5992831664f039e49f1f178f4256f/artifacts/xgboost-model
+status: READY
+status_message: null
+storage_location: file:///D:/BSCS/7th%20sem/MLOPs/MLOPs_Project/mlruns/258893239347701872/55f5992831664f039e49f1f178f4256f/artifacts/xgboost-model
+user_id: null
+version: 1

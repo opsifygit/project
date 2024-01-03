@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/BSCS/7th%20sem/MLOPs/MLOPs_Project/mlruns/258893239347701872/b77c9118c3bf4056ae6c191e6d6b2bb3/artifacts
+end_time: 1704256740191
+entry_point_name: ''
+experiment_id: '258893239347701872'
+lifecycle_stage: active
+run_id: b77c9118c3bf4056ae6c191e6d6b2bb3
+run_name: run_17
+run_uuid: b77c9118c3bf4056ae6c191e6d6b2bb3
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1704256732827
+status: 3
+tags: []
+user_id: adeel

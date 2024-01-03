@@ -1,0 +1,6 @@
+artifact_location: file:///D:/BSCS/7th%20sem/MLOPs/MLOPs_Project/mlruns/273115238423021424
+creation_time: 1704256152326
+experiment_id: '273115238423021424'
+last_update_time: 1704256152326
+lifecycle_stage: active
+name: mlflow-xgboost-r2
