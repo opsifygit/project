@@ -17,7 +17,6 @@ This project is about creating a CI/CD pipeline for a machine learning applicati
 - Pandas
 - Numpy
 
-
 ## Running MLFLOW
 
 mlflow server --host 127.0.0.1 --port 8080
