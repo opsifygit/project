@@ -34,7 +34,7 @@ jobs:
         
     - name: Build Flask app
       run: |
-        sh 'cd app && docker build . --file ./Dockerfile --tag opsifygit/project:latest'
+        docker build . --file ./app/Dockerfile --tag opsifygit/project:latest
     - name: Publish Container
       run: |
         sh 'docker login -u opsifygit -p ${{ secrets.DOCKER_PASSWORD }}'
